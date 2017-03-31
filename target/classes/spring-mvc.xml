@@ -19,6 +19,7 @@
 	
 	<mvc:annotation-driven/>
 	
+	<!-- 静态文件映射，防止被spring的处理 -->
 	<mvc:resources mapping="/static/**" location="/static/"/>
 
 	<!-- 视图解析器 -->
