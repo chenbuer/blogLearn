@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByUserName(userName);
 	}
 
+	public User find() {
+		// TODO Auto-generated method stub
+		return userDao.find();
+	}
+
 }

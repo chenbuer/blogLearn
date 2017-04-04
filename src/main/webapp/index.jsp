@@ -148,8 +148,8 @@
 					<!-- <img src="${pageContext.request.contextPath}/static/userImages/20160202095456.png"/> -->
 					<img src="http://www.sinaimg.cn/dy/slidenews/4_img/2014_39/704_1429733_253181.jpg"/>
 				</div>
-				<div class="nickName">美女</div>
-				<div class="userSign">(知识改变命运，技术改变世界)</div>
+				<div class="nickName">${blogger.userName }</div>
+				<div class="userSign">${blogger.sign }</div>
 			</div>
 	  	
 	  		<div class="data_list">

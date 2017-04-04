@@ -15,4 +15,6 @@ public interface UserDao {
 	 * @return
 	 */
 	User getUserByUserName(String userName);
+	
+	User find();
 }
