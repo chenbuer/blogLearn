@@ -189,22 +189,9 @@ body {
 					</div>
 					<div class="datas">
 						<ul>
-
-							<li><span><a href="/index.html?typeId=1">Java核心基础(1)</a></span></li>
-
-							<li><span><a href="/index.html?typeId=2">Mysql(1)</a></span></li>
-
-							<li><span><a href="/index.html?typeId=3">Tomcat(1)</a></span></li>
-
-							<li><span><a href="/index.html?typeId=10">jsoup(1)</a></span></li>
-
-							<li><span><a href="/index.html?typeId=7">shiro(1)</a></span></li>
-
-							<li><span><a href="/index.html?typeId=9">webservice(2)</a></span></li>
-
-							<li><span><a href="/index.html?typeId=4">IT之路(3)</a></span></li>
-
-							<li><span><a href="/index.html?typeId=5">随心生活(2)</a></span></li>
+						<c:forEach var="blogType" items="${blogTypeCountList }">
+							<li><span><a href="/index.html?typeId=1">${blogType.typeName }(${blogType.blogCount })</a></span></li>
+						</c:forEach>
 
 						</ul>
 					</div>
@@ -255,7 +242,7 @@ body {
 				<div align="center" style="padding-top: 120px">
 					<span style="float: left;">Powered by <a
 						href="http://blog.java1234.com" target="_blank">Java1234</a> V1.0
-					</span> Copyright © 2012-2016 Java知识分享网 版权所有
+					</span> Copyright © chenbuer 版权所有
 				</div>
 			</div>
 		</div>

@@ -11,8 +11,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+import com.chenbuer.entity.BlogType;
 import com.chenbuer.entity.Link;
 import com.chenbuer.entity.User;
+import com.chenbuer.service.BlogTypeService;
 import com.chenbuer.service.LinkService;
 import com.chenbuer.service.UserService;
 
@@ -36,6 +38,11 @@ public class InitComponent implements ServletContextListener,ApplicationContextA
 		//获取到所有友情链接信息存储到application中
 		List<Link> linkList=linkService.list();
 		application.setAttribute("linkList", linkList);
+		
+		BlogTypeService blogTypeService = (BlogTypeService) applicationContext.getBean("blogTypeService");
+		//获取到所有友情链接信息存储到application中
+		List<BlogType> blogTypeCountList=blogTypeService.countList();
+		application.setAttribute("blogTypeCountList", blogTypeCountList);
 	}
 
 	public void contextDestroyed(ServletContextEvent servletContextEvent) {
