@@ -207,13 +207,10 @@ body {
 					</div>
 					<div class="datas">
 						<ul>
-
-							<li><span><a
-									href="/index.html?releaseDateStr=2016年02月">2016年02月(11)</a></span></li>
-
-							<li><span><a
-									href="/index.html?releaseDateStr=2016年01月">2016年01月(1)</a></span></li>
-
+							<c:forEach items="${blogCountList }" var="blog">
+								<li><span><a
+										href="/index.html?releaseDateStr=2016年02月">${blog.releaseDateStr }(${blog.blogCount })</a></span></li>
+							</c:forEach>
 						</ul>
 					</div>
 				</div>
