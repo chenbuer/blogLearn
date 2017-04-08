@@ -21,4 +21,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="countList" resultMap="BlogResult">
 		SELECT DATE_FORMAT(releaseDate,'%Y年%m月') AS releaseDateStr,COUNT(*) AS blogCount  FROM t_blog GROUP BY DATE_FORMAT(releaseDate,'%Y年%m月') ORDER BY  DATE_FORMAT(releaseDate,'%Y年%m月') DESC;
 	</select>
+	
+	<select id="listBlogWithPage" parameterType="Map" resultMap="BlogResult">
+		SELECT * FROM t_blog
+		ORDER BY releaseDate DESC
+		<if test="start!=null and pageSize!=null">
+			LIMIT #{start},#{pageSize}		
+		</if>
+	</select>
+	
+	<select id="getBlogCount" resultType="int">
+		SELECT COUNT(*) FROM t_blog;
+	</select>
 </mapper> 

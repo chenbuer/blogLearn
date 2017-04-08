@@ -1,6 +1,7 @@
 package com.chenbuer.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -23,6 +24,14 @@ public class BlogServiceImpl implements BlogService {
 
 	public List<Blog> countList() {
 		return blogDao.countList();
+	}
+
+	public List<Blog> listBlogWithPage(Map map) {
+		return blogDao.listBlogWithPage(map);
+	}
+
+	public int getBlogCount() {
+		return blogDao.getBlogCount();
 	}
 
 }
