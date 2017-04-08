@@ -11,4 +11,5 @@ import com.chenbuer.entity.BlogType;
  */
 public interface BlogTypeDao {
 	List<BlogType> countList();
+	BlogType findById(Integer id);
 }

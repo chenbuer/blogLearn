@@ -13,10 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="replyHit" column="replyHit"/>
 		<result property="content" column="content"/>
 		<result property="keyWord" column="keyWord"/>
+		
+		<association property="blogType" column="typeId" select="com.chenbuer.dao.BlogTypeDao.findById"></association>
 	</resultMap>
 	
 	
-	<select id="countList" resultType="Blog">
+	<select id="countList" resultMap="BlogResult">
 		SELECT DATE_FORMAT(releaseDate,'%Y年%m月') AS releaseDateStr,COUNT(*) AS blogCount  FROM t_blog GROUP BY DATE_FORMAT(releaseDate,'%Y年%m月') ORDER BY  DATE_FORMAT(releaseDate,'%Y年%m月') DESC;
 	</select>
 </mapper> 
