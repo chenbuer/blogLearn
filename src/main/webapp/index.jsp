@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,8 +43,12 @@ body {
 						<ul>
 							<c:forEach var="blog" items="${blogPageList }">
 
-								<li style="margin-bottom: 30px"><span class="date"><a
-										href="${pageContext.request.contextPath}/blog/articles/52.html">2016年02月15日</a></span>
+								<li style="margin-bottom: 30px">
+								<span class="date">
+									<a href="${pageContext.request.contextPath}/blog/articles/52.html">
+										<fmt:formatDate pattern="yyyy年MM月dd日" value="${blog.releaseDate}"/>
+									</a>
+								</span>
 									<span class="title"><a
 										href="${pageContext.request.contextPath}/blog/articles/52.html">${blog.title }</a></span>
 									<span class="summary">摘要:${blog.summary }...</span> 
@@ -62,7 +67,8 @@ body {
 											title="1455539761187019902.jpg"></a> &nbsp;&nbsp;
 									</span> 
 								 -->
-								<span class="info">发表于 2016-02-15 21:06 阅读(${blog.clickHit }) 评论(${blog.replyHit }) </span></li>
+								<span class="info">发表于 <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${blog.releaseDate}"/>
+								 阅读(${blog.clickHit }) 评论(${blog.replyHit }) </span></li>
 								<hr
 									style="height: 5px; border: none; border-top: 1px dashed gray; padding-bottom: 10px;" />
 							</c:forEach>
