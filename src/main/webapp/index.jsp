@@ -25,54 +25,9 @@ body {
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<img alt="java1234开源博客系统"
-					src="${pageContext.request.contextPath}/static/images/logo.png">
-			</div>
-			<div class="col-md-8">
-				<iframe style="float: right;" width="420" scrolling="no" height="60"
-					frameborder="0" allowtransparency="true"
-					src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=5"></iframe>
-			</div>
-		</div>
+		<jsp:include page="/WEB-INF/FE/template/header.jsp"></jsp:include>
 
-		<div class="row">
-			<div class="col-md-12" style="padding-top: 10px">
-				<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed"
-							data-toggle="collapse"
-							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-							<span class="sr-only">Toggle navigation</span> <span
-								class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="#"><font color="black"><strong>首页</strong></font></a>
-					</div>
-
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse"
-						id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li><a href="#"><font color="black"><strong>关于博主</strong></font></a></li>
-							<li><a href="#"><font color="black"><strong>本站源码下载</strong></font></a></li>
-						</ul>
-						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group">
-								<input type="text" class="form-control"
-									placeholder="请输入要查询的关键字...">
-							</div>
-							<button type="submit" class="btn btn-default">搜索</button>
-						</form>
-					</div>
-					<!-- /.navbar-collapse -->
-				</div>
-				<!-- /.container-fluid --> </nav>
-			</div>
-		</div>
+		<jsp:include page="/WEB-INF/FE/template/navigator.jsp"></jsp:include>
 
 		<div class="row">
 			<div class="col-md-9">
@@ -165,8 +120,13 @@ body {
 					</div>
 				</div>
 			</div>
+			
+			
+			
+			
+			
 			<div class="col-md-3">
-				<div class="data_list">
+					<div class="data_list">
 					<div class="data_list_title">
 						<img
 							src="${pageContext.request.contextPath}/static/images/user_icon.png" />
@@ -219,7 +179,7 @@ body {
 					<div class="data_list_title">
 						<img
 							src="${pageContext.request.contextPath}/static/images/link_icon.png" />
-						友情链接
+						友情链接test
 					</div>
 					<div class="datas">
 						<ul>
@@ -230,19 +190,11 @@ body {
 						</ul>
 					</div>
 				</div>
-
+			
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-md-12">
-				<div align="center" style="padding-top: 120px">
-					<span style="float: left;">Powered by <a
-						href="http://blog.java1234.com" target="_blank">Java1234</a> V1.0
-					</span> Copyright © chenbuer 版权所有
-				</div>
-			</div>
-		</div>
+		<jsp:include page="/WEB-INF/FE/template/footer.jsp"></jsp:include>
 
 
 	</div>
