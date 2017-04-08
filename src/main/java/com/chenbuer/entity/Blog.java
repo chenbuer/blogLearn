@@ -10,10 +10,10 @@ import java.util.Date;
 public class Blog {
 	private int id;
 	private String title;
-	private String summary;
+	private String summary;//摘要
 	private Date releaseDate;
-	private int clickHit;
-	private int replyHit;
+	private int clickHit;//阅读次数
+	private int replyHit;//评论次数
 	private String content;
 	private String keyWord;//关键字用逗号分开
 	
