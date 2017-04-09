@@ -75,6 +75,15 @@ body {
 						</ul>
 					</div>
 				</div>
+				
+				<!-- 分页代码 -->
+				<nav aria-label="Page navigation">
+				  <ul class="pagination">
+				    ${pageCode }
+				  </ul>
+				</nav>
+				
+				
 			</div>
 
 
