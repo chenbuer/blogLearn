@@ -30,8 +30,8 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.listBlogWithPage(map);
 	}
 
-	public int getBlogCount() {
-		return blogDao.getBlogCount();
+	public int getBlogCount(Map map) {
+		return blogDao.getBlogCount(map);
 	}
 
 }

@@ -10,7 +10,12 @@ public interface UserService {
 	 * @param userName
 	 * @return
 	 */
-	public User getUserByUserName(String userName);
+	User getUserByUserName(String userName);
 	
-	public User find();
+	/**
+	 * 获取到博主信息
+	 * @return
+	 */
+	User find();
+	
 }

@@ -91,71 +91,7 @@ body {
 
 
 			<div class="col-md-3">
-				<div class="data_list">
-					<div class="data_list_title">
-						<img
-							src="${pageContext.request.contextPath}/static/images/user_icon.png" />
-						博主信息
-					</div>
-					<div class="user_image">
-						<!-- <img src="${pageContext.request.contextPath}/static/userImages/20160202095456.png"/> -->
-						<img
-							src="http://www.sinaimg.cn/dy/slidenews/4_img/2014_39/704_1429733_253181.jpg" />
-					</div>
-					<div class="nickName">${blogger.userName }</div>
-					<div class="userSign">${blogger.sign }</div>
-				</div>
-
-				<div class="data_list">
-					<div class="data_list_title">
-						<img
-							src="${pageContext.request.contextPath}/static/images/byType_icon.png" />
-						按日志类别
-					</div>
-					<div class="datas">
-						<ul>
-							<c:forEach var="blogType" items="${blogTypeCountList }">
-								<li><span><a href="/index.html?typeId=1">${blogType.typeName }(${blogType.blogCount })</a></span></li>
-							</c:forEach>
-
-						</ul>
-					</div>
-				</div>
-
-
-
-				<div class="data_list">
-					<div class="data_list_title">
-						<img
-							src="${pageContext.request.contextPath}/static/images/byDate_icon.png" />
-						按日志日期
-					</div>
-					<div class="datas">
-						<ul>
-							<c:forEach items="${blogCountList }" var="blog">
-								<li><span><a
-										href="/index.html?releaseDateStr=2016年02月">${blog.releaseDateStr }(${blog.blogCount })</a></span></li>
-							</c:forEach>
-						</ul>
-					</div>
-				</div>
-
-				<div class="data_list">
-					<div class="data_list_title">
-						<img
-							src="${pageContext.request.contextPath}/static/images/link_icon.png" />
-						友情链接test
-					</div>
-					<div class="datas">
-						<ul>
-
-							<c:forEach items="${linkList }" var="link">
-								<li><span><a href="${link.linkUrl }" target="_blank">${link.linkName }</a></span></li>
-							</c:forEach>
-						</ul>
-					</div>
-				</div>
-
+				<jsp:include page="/pages/FE/template/siderBar.jsp"></jsp:include>
 			</div>
 		</div>
 

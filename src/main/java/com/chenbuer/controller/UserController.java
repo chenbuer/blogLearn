@@ -1,5 +1,9 @@
 package com.chenbuer.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,11 +11,16 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.chenbuer.entity.Blog;
+import com.chenbuer.entity.PageBean;
 import com.chenbuer.entity.User;
+import com.chenbuer.service.BlogService;
 import com.chenbuer.service.UserService;
 import com.chenbuer.util.CryptographyUtil;
+import com.chenbuer.util.PageUtil;
 
 /**
  * 用户controller层
@@ -42,6 +51,14 @@ public class UserController {
 			//下面这个是要写的，开始自己忘了
 			return "login";
 		}
+		
+	}
+	
+	@RequestMapping("aboutMe")
+	public String aboutMe(ModelMap model, HttpServletRequest request) {
+		User blogger=userService.find();
+		model.addAttribute("blogger", blogger);
+		return "aboutMe";
 		
 	}
 }

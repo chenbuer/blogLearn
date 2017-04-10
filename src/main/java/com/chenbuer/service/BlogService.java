@@ -25,5 +25,5 @@ public interface BlogService {
 	 * ²éÑ¯Blog×ÜÊı
 	 * @return
 	 */
-	int getBlogCount();
+	int getBlogCount(Map map);
 }

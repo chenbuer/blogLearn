@@ -12,6 +12,7 @@ import com.chenbuer.entity.Blog;
  */
 public interface BlogDao {
 
+
 	/**
 	 * 按月份列出Blog
 	 * @return
@@ -29,5 +30,5 @@ public interface BlogDao {
 	 * 查询Blog总数
 	 * @return
 	 */
-	int getBlogCount();
+	int getBlogCount(Map map);
 }
