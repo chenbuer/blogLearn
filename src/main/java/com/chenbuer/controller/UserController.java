@@ -54,11 +54,17 @@ public class UserController {
 		
 	}
 	
+	/**
+	 * 前台查看关于博主的controller层
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("aboutMe")
 	public String aboutMe(ModelMap model, HttpServletRequest request) {
 		User blogger=userService.find();
 		model.addAttribute("blogger", blogger);
-		return "aboutMe";
+		return "/FE/aboutMe";
 		
 	}
 }

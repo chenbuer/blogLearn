@@ -68,7 +68,7 @@ public class IndexController {
 		}
  		String pageCode=new PageUtil().getPageCode("/blog/index.html",blogService.getBlogCount(pageMap),Integer.parseInt(page),ONE_PAGE_SIZE,param.toString());
 		model.addAttribute("pageCode", pageCode);
-		return "index";
+		return "/FE/index";
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class IndexController {
 	 */
 	@RequestMapping("download")
 	public String download(){
-		return "download";
+		return "/FE/download";
 	}
 
 }

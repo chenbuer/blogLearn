@@ -26,19 +26,19 @@ body {
 </head>
 <body>
 	<div class="container">
-		<jsp:include page="/pages/FE/template/header.jsp"></jsp:include>
+		<jsp:include page="/FE/template/header.jsp"></jsp:include>
 
-		<jsp:include page="/pages/FE/template/navigator.jsp"></jsp:include>
+		<jsp:include page="/FE/template/navigator.jsp"></jsp:include>
 
 		<div class="row">
 			<div class="col-md-9">
 				<div class="data_list">
 					<div class="data_list_title">
 						<img
-							src="${pageContext.request.contextPath}/static/images/download_icon.png" />
-						源码下载
+							src="${pageContext.request.contextPath}/static/images/about_icon.png" />
+						博主信息
 					</div>
-				下载毛毛啊，还没写完呢
+				${blogger.profile}
 					
 				</div>
 				
@@ -49,11 +49,11 @@ body {
 
 
 			<div class="col-md-3">
-				<jsp:include page="/pages/FE/template/siderBar.jsp"></jsp:include>
+				<jsp:include page="/FE/template/siderBar.jsp"></jsp:include>
 			</div>
 		</div>
 
-		<jsp:include page="/pages/FE/template/footer.jsp"></jsp:include>
+		<jsp:include page="/FE/template/footer.jsp"></jsp:include>
 
 
 	</div>
