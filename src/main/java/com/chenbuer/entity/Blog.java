@@ -18,6 +18,7 @@ public class Blog {
 	private String keyWord;//关键字用逗号分开
 	
 	private BlogType blogType;//typeId不用，而是用BlogType代替
+	private Integer typeId;
 	private String releaseDateStr;//【数据库中没有】
 	private int blogCount;//用来表示在某个月份博客的数量【数据库中没有】
 	public int getId() {
@@ -25,6 +26,13 @@ public class Blog {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public Integer getTypeId() {
+		return typeId;
+	}
+	public void setTypeId(Integer typeId) {
+		this.typeId = typeId;
 	}
 	public String getTitle() {
 		return title;
