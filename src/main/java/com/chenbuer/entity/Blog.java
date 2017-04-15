@@ -21,6 +21,22 @@ public class Blog {
 	private Integer typeId;
 	private String releaseDateStr;//【数据库中没有】
 	private int blogCount;//用来表示在某个月份博客的数量【数据库中没有】
+	
+	
+	public Blog(String title, String summary, String content, String keyWord, Integer typeId) {
+		super();
+		this.title = title;
+		this.summary = summary;
+		this.content = content;
+		this.keyWord = keyWord;
+		this.typeId = typeId;
+	}
+	
+	
+	public Blog() {
+	}
+
+
 	public int getId() {
 		return id;
 	}

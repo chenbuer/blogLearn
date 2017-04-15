@@ -34,4 +34,7 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.getBlogCount(map);
 	}
 
+	public void save(Blog blog){
+		blogDao.save(blog);
+	}
 }

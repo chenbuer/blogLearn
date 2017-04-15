@@ -22,8 +22,35 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/ueditor/lang/zh-cn/zh-cn.js"></script>
 
 <script type="text/javascript">
-function writeFinish(){
-	
+function submitData() {
+	var title = $("#title").val();
+	var typeId = $("#typeId").combobox("getValue");
+	var content = UE.getEditor('editor').getContent();
+	var summary = UE.getEditor('editor').getContentTxt().substr(0, 155);
+	var keyWord = $("#keyWord").val();
+	if (title == null || title == '') {
+		$.messager.alert("系统提示", "请输入标题！");
+	} else if (typeId == null || typeId == '') {
+		$.messager.alert("系统提示", "请选择博客类型！");
+	} else if (content == null || content == '') {
+		$.messager.alert("系统提示", "请编辑博客内容！");
+	} else {
+		$.post("${pageContext.request.contextPath}/admin/blog/save.do",
+				{
+					'title' : title,
+					'typeId' : typeId,
+					'content' : content,
+					'summary' : summary,
+					'keyWord' : keyWord,
+				}, function(result) {
+					if (result.success) {
+						$.messager.alert("系统提示", "博客发布成功！");
+						clearValues();
+					} else {
+						$.messager.alert("系统提示", "博客发布失败！");
+					}
+				}, "json");
+	}
 }
 </script>
 

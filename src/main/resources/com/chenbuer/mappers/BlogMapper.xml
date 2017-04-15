@@ -49,4 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
+	
+	<insert id="save" parameterType="Blog">
+		INSERT INTO t_blog(title,summary,content,keyWord,typeId,releaseDate) 
+		VALUES(#{title},#{summary},#{content},#{keyWord},#{typeId},NOW());
+	</insert>
 </mapper> 

@@ -13,7 +13,7 @@ import com.chenbuer.service.UserService;
  *
  */
 @Controller
-@RequestMapping("/admin/blog")
+@RequestMapping("/admin/user")
 public class AdminUserController {
 
 	@Resource

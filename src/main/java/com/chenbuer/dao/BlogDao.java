@@ -31,4 +31,10 @@ public interface BlogDao {
 	 * @return
 	 */
 	int getBlogCount(Map map);
+	
+	/**
+	 * Ìí¼Ó²©¿Í
+	 * @param blog
+	 */
+	void save(Blog blog);
 }
