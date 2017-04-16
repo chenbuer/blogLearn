@@ -31,6 +31,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="releaseDateStr!=null">
 				AND DATE_FORMAT(releaseDate,'%Y年%m月')=#{releaseDateStr}
 			</if>
+			<if test="title!=null">
+				AND title like #{title}
+			</if>
 		</where>
 		<if test="start!=null and pageSize!=null">
 			LIMIT #{start},#{pageSize}		
@@ -45,6 +48,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="releaseDateStr!=null">
 				AND DATE_FORMAT(releaseDate,'%Y年%m月')=#{releaseDateStr}
+			</if>
+			<if test="title!=null">
+				AND title like #{title}
 			</if>
 		</where>
 	</select>

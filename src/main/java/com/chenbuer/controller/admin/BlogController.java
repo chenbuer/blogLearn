@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.chenbuer.config.FinalParam;
+import com.chenbuer.entity.AdminBlogList;
 import com.chenbuer.entity.Blog;
 import com.chenbuer.entity.PageBean;
 import com.chenbuer.service.BlogService;
@@ -44,25 +46,36 @@ public class BlogController {
 	
 	@RequestMapping("/list")
 	public void list(@RequestParam(value="page",required=false)String page,
-			@RequestParam(value="size",required=false)String size,
+			@RequestParam(value="rows",required=false)String size,//每一页有多少item
+			@RequestParam(value="title",required=false)String title,//每一页有多少item
 			HttpServletResponse response) throws Exception{
 		if(StringUtil.isEmpty(page)){
 			page="1";
 		}
 		if(StringUtil.isEmpty(size)){
-			size="5";
-//			size=new FinalParam().ONE_PAGE_SIZE;
+			size=new FinalParam().ONE_PAGE_SIZE;
 		}
+		int total=blogService.getBlogCount(null);
 		PageBean pageBean=new PageBean(Integer.parseInt(page), Integer.parseInt(size));
 		Map map=new HashMap();
 		map.put("start", pageBean.getStart());
 		map.put("pageSize", pageBean.getPageSize());
+		if(StringUtil.isNotEmpty(title)){
+			map.put("title", "%"+title+"%");
+			//总数也要重新计算
+			Map totleMap=new HashMap();
+			totleMap.put("title", "%"+title+"%");
+			total=blogService.getBlogCount(totleMap);
+		}
 		List<Blog> blogs=blogService.listBlogWithPage(map);
 		for (Blog blog : blogs) {
 			blog.setReleaseDateStr(new DateUtil().formatDate("yyyy-MM-dd", blog.getReleaseDate()));
 		}
 		//关闭引用支持，参考https://github.com/alibaba/fastjson/wiki/%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8
-		ResponseUtil.write(response, JSON.toJSONString(blogs,SerializerFeature.DisableCircularReferenceDetect));
+		AdminBlogList rows=new AdminBlogList();
+		rows.setRows(blogs);
+		rows.setTotal(total);
+		ResponseUtil.write(response, JSON.toJSONString(rows,SerializerFeature.DisableCircularReferenceDetect));
 	}
 	
 	@RequestMapping("/delete")

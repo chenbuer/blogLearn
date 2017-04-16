@@ -16,6 +16,13 @@ function formatBlogType(val, rowData, rowIndex) {
 	return rowData.blogType.typeName;
 }
 
+function searchBlog(){//在进行搜索的时候，easyui直接帮我们封装好了
+	var title=$("#searchTitle").val();
+	$('#datagrid').datagrid('load',{
+		'title': title
+	});
+}
+
 function deleteBlog(){
 	var selectedRows = $("#datagrid").datagrid("getSelections");
 	if(selectedRows.length == 0) {
@@ -48,12 +55,12 @@ function deleteBlog(){
 </head>
 <body>
 	<div id="p" class="easyui-panel" title="博客管理界面" fitColums="true">
-		<table class="easyui-datagrid" fitColumns="true" id="datagrid" toolbar="#mytoolbar"
+		<table class="easyui-datagrid" fitColumns="true" id="datagrid" toolbar="#mytoolbar" pagination="true" rownumbers="true"
 	    url='${pageContext.request.contextPath}/admin/blog/list.do'>
 		    <thead>
 				<tr>
 					<th data-options="field:'checkbox',width:100" checkbox="true"></th>
-					<th data-options="field:'id',width:25">id</th>
+					<th data-options="field:'id',width:25" hidden="false">id</th><!-- 到时候调试完了，这个可以hidden掉了 -->
 					<th data-options="field:'title',width:100">标题</th>
 					<th data-options="field:'blogType',width:100" formatter="formatBlogType">类型</th>
 					<th data-options="field:'content',width:200">内容</th>
@@ -67,12 +74,12 @@ function deleteBlog(){
 		
 	</div>
 	
-	
 	<div id="mytoolbar">
 		&nbsp;&nbsp;&nbsp;标题：&nbsp;<input Class="easyui-textbox" id="searchTitle">
 		<a id="btn" href="javascript:searchBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">搜索</a>
 		<a id="btn" href="javascript:deleteBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'">删除</a>
 		<a id="btn" href="javascript:updateBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">修改</a>
 	</div>
+	
 </body>
 </html>
