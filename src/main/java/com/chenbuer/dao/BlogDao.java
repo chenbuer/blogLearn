@@ -37,4 +37,10 @@ public interface BlogDao {
 	 * @param blog
 	 */
 	void save(Blog blog);
+	
+	/**
+	 * É¾³ý²©¿Í
+	 * @param id
+	 */
+	void delete(Integer id);
 }

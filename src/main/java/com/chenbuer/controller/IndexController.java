@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.chenbuer.config.FinalParam;
 import com.chenbuer.entity.Blog;
 import com.chenbuer.entity.PageBean;
 import com.chenbuer.service.BlogService;
@@ -24,7 +25,6 @@ import com.sun.xml.internal.ws.message.RelatesToHeader;
 @RequestMapping("/")
 public class IndexController {
 	
-	private final Integer ONE_PAGE_SIZE=2;
 
 	@Resource
 	private BlogService blogService;
@@ -66,7 +66,7 @@ public class IndexController {
 		if(StringUtil.isNotEmpty(releaseDateStr)){
 			pageMap.put("releaseDateStr", releaseDateStr);
 		}
- 		String pageCode=new PageUtil().getPageCode("/blog/index.html",blogService.getBlogCount(pageMap),Integer.parseInt(page),ONE_PAGE_SIZE,param.toString());
+ 		String pageCode=new PageUtil().getPageCode("/blog/index.html",blogService.getBlogCount(pageMap),Integer.parseInt(page),Integer.parseInt(new FinalParam().ONE_PAGE_SIZE),param.toString());
 		model.addAttribute("pageCode", pageCode);
 		return "/FE/index";
 	}

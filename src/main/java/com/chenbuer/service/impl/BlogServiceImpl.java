@@ -37,4 +37,8 @@ public class BlogServiceImpl implements BlogService {
 	public void save(Blog blog){
 		blogDao.save(blog);
 	}
+
+	public void delete(Integer id) {
+		blogDao.delete(id);
+	}
 }

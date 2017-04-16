@@ -44,13 +44,20 @@ function submitData() {
 					'keyWord' : keyWord,
 				}, function(result) {
 					if (result.success) {
-						$.messager.alert("系统提示", "博客发布成功！");
 						clearValues();
+						$.messager.alert("系统提示", "博客发布成功！");
 					} else {
 						$.messager.alert("系统提示", "博客发布失败！");
 					}
 				}, "json");
 	}
+}
+
+function clearValues() {
+	$("#title").val("");
+	$("#typeId").combobox("setValue", "");
+	UE.getEditor("editor").setContent("");
+	$("#keyWord").val("");
 }
 </script>
 
