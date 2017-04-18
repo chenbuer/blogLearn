@@ -13,20 +13,19 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-easyui-1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
 
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/ueditor/ueditor.all.min.js">
-	
-</script>
-<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
-<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/ueditor/lang/zh-cn/zh-cn.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="${pageContext.request.contextPath}/static/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="${pageContext.request.contextPath}/static/kindeditor/lang/zh_CN.js"></script>
+<script charset="utf-8" src="${pageContext.request.contextPath}/static/kindeditor/plugins/code/prettify.js"></script>
 
 <script type="text/javascript">
 function submitData() {
+	var editor = KindEditor.create('#editor');
 	var title = $("#title").val();
 	var typeId = $("#typeId").combobox("getValue");
-	var content = UE.getEditor('editor').getContent();
-	var summary = UE.getEditor('editor').getContentTxt().substr(0, 155);
+	var content = editor.html();
+	var summary = editor.html().substr(0, 155);
 	var keyWord = $("#keyWord").val();
 	if (title == null || title == '') {
 		$.messager.alert("系统提示", "请输入标题！");
@@ -54,9 +53,10 @@ function submitData() {
 }
 
 function clearValues() {
+	var editor = KindEditor.create('#editor');
 	$("#title").val("");
 	$("#typeId").combobox("setValue", "");
-	UE.getEditor("editor").setContent("");
+	editor.html('');
 	$("#keyWord").val("");
 }
 </script>
@@ -86,9 +86,9 @@ function clearValues() {
 			<tr>
 				<td valign="top">博客内容：</td>
 				<td>
-					<script id="editor" name="content" type="text/plain" style="width:95%; height:500px;">
+					<textarea id="editor" name="content" type="text/plain" style="width:95%; height:500px;">
 						博客内容...
-					</script>
+					</textarea>
 				</td>
 			</tr>
 			
@@ -110,7 +110,13 @@ function clearValues() {
 
 	<!-- 实例化编辑器 -->
 	<script type="text/javascript">
-		var ue = UE.getEditor('editor');
+		KindEditor.ready(function(K) {
+			var options = {
+			        filterMode : true
+			};
+			var editor = K.create("#editor",options);
+			prettyPrint();
+		});
 	</script>
 </body>
 </html>

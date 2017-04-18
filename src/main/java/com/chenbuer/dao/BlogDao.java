@@ -43,4 +43,17 @@ public interface BlogDao {
 	 * @param id
 	 */
 	void delete(Integer id);
+	
+	/**
+	 * 根据Id找到Blog
+	 * @param id
+	 * @return
+	 */
+	Blog findById(Integer id);
+	
+	/**
+	 * 修改Blog
+	 * @param map
+	 */
+	void update(Blog blog);
 }

@@ -50,6 +50,20 @@ function deleteBlog(){
 	});
 }
 
+//编辑
+function updateBlog(){
+	var selectedRows = $("#datagrid").datagrid("getSelections");
+	if(selectedRows.length != 1) {
+		$.messager.alert("系统提示", "请选择一个要修改的博客");
+		return;
+	}
+	var row = selectedRows[0];
+	window.parent.openTab("修改博客","updateBlog.jsp?id=" + row.id, "icon-writeblog");
+
+}
+
+
+
 
 </script>
 </head>
@@ -76,9 +90,9 @@ function deleteBlog(){
 	
 	<div id="mytoolbar">
 		&nbsp;&nbsp;&nbsp;标题：&nbsp;<input Class="easyui-textbox" id="searchTitle">
-		<a id="btn" href="javascript:searchBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">搜索</a>
-		<a id="btn" href="javascript:deleteBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'">删除</a>
-		<a id="btn" href="javascript:updateBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">修改</a>
+		<a href="javascript:searchBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">搜索</a>
+		<a href="javascript:deleteBlog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'">删除</a>
+		<a class="easyui-linkbutton" href="javascript:updateBlog()" data-options="plain:true,iconCls:'icon-edit'">修改</a>
 	</div>
 	
 </body>

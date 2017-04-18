@@ -8,7 +8,7 @@ import java.util.Date;
  *
  */
 public class Blog {
-	private int id;
+	private Integer id;
 	private String title;
 	private String summary;//摘要
 	private Date releaseDate;
@@ -22,28 +22,23 @@ public class Blog {
 	private String releaseDateStr;//【数据库中没有】
 	private int blogCount;//用来表示在某个月份博客的数量【数据库中没有】
 	
-	
-	public Blog(String title, String summary, String content, String keyWord, Integer typeId) {
-		super();
-		this.title = title;
-		this.summary = summary;
-		this.content = content;
-		this.keyWord = keyWord;
-		this.typeId = typeId;
-	}
-	
-	
 	public Blog() {
 	}
 
 
-	public int getId() {
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
+
+
 	public Integer getTypeId() {
 		return typeId;
 	}

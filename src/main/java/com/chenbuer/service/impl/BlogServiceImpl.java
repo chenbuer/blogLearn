@@ -41,4 +41,12 @@ public class BlogServiceImpl implements BlogService {
 	public void delete(Integer id) {
 		blogDao.delete(id);
 	}
+
+	public Blog findById(Integer id) {
+		return blogDao.findById(id);
+	}
+
+	public void update(Blog blog) {
+		blogDao.update(blog);
+	}
 }

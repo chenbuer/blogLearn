@@ -63,4 +63,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="delete" parameterType="Integer">
 		DELETE FROM t_blog WHERE id=#{id}
 	</insert>
+	
+	<select id="findById" parameterType="Integer" resultMap="BlogResult">
+		SELECT * FROM t_blog WHERE id=#{id}
+	</select>
+	
+	<update id="update" parameterType="Blog">
+		update t_blog 
+		<set>
+			<if test="title!=null">
+				title=#{title},
+			</if>
+			<if test="summary!=null">
+				summary=#{summary},
+			</if>
+			<if test="clickHit!=null">
+				clickHit=#{clickHit},
+			</if>
+			<if test="replyHit!=null">
+				replyHit = #{replyHit},
+			</if>
+			<if test="content!=null">
+				content = #{content},
+			</if>
+			<if test="keyWord!=null">
+				keyWord = #{keyWord},
+			</if>
+			<if test="typeId!=null">
+				typeId = #{typeId},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	
+	
 </mapper> 
