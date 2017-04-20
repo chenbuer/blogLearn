@@ -23,6 +23,7 @@ function searchBlog(){//在进行搜索的时候，easyui直接帮我们封装�
 	});
 }
 
+
 function deleteBlog(){
 	var selectedRows = $("#datagrid").datagrid("getSelections");
 	if(selectedRows.length == 0) {
@@ -50,7 +51,8 @@ function deleteBlog(){
 	});
 }
 
-//编辑
+
+//编辑博客
 function updateBlog(){
 	var selectedRows = $("#datagrid").datagrid("getSelections");
 	if(selectedRows.length != 1) {
@@ -69,7 +71,7 @@ function updateBlog(){
 </head>
 <body>
 	<div id="p" class="easyui-panel" title="博客管理界面" fitColums="true">
-		<table class="easyui-datagrid" fitColumns="true" id="datagrid" toolbar="#mytoolbar" pagination="true" rownumbers="true"
+		<table class="easyui-datagrid" fitColumns="true" id="datagrid" toolbar="#mytoolbar" pagination="true" rownumbers="true" pageList="[10,15,20,30,40,50]"
 	    url='${pageContext.request.contextPath}/admin/blog/list.do'>
 		    <thead>
 				<tr>
@@ -83,9 +85,6 @@ function updateBlog(){
 				</tr>
 		    </thead>
 		</table>
-		
-		
-		
 	</div>
 	
 	<div id="mytoolbar">

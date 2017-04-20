@@ -95,7 +95,6 @@
 		})
 		
 		function udpateBlog() {
-			var editor1 = KindEditor.create('#editor');
 			var id=$("#id").val();
 			var title = $("#title").val();
 			var typeId = $("#typeId").combobox("getValue");

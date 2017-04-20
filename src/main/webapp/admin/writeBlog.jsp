@@ -19,47 +19,6 @@
 <script charset="utf-8" src="${pageContext.request.contextPath}/static/kindeditor/lang/zh_CN.js"></script>
 <script charset="utf-8" src="${pageContext.request.contextPath}/static/kindeditor/plugins/code/prettify.js"></script>
 
-<script type="text/javascript">
-function submitData() {
-	var editor = KindEditor.create('#editor');
-	var title = $("#title").val();
-	var typeId = $("#typeId").combobox("getValue");
-	var content = editor.html();
-	var summary = editor.html().substr(0, 155);
-	var keyWord = $("#keyWord").val();
-	if (title == null || title == '') {
-		$.messager.alert("系统提示", "请输入标题！");
-	} else if (typeId == null || typeId == '') {
-		$.messager.alert("系统提示", "请选择博客类型！");
-	} else if (content == null || content == '') {
-		$.messager.alert("系统提示", "请编辑博客内容！");
-	} else {
-		$.post("${pageContext.request.contextPath}/admin/blog/save.do",
-				{
-					'title' : title,
-					'typeId' : typeId,
-					'content' : content,
-					'summary' : summary,
-					'keyWord' : keyWord,
-				}, function(result) {
-					if (result.success) {
-						clearValues();
-						$.messager.alert("系统提示", "博客发布成功！");
-					} else {
-						$.messager.alert("系统提示", "博客发布失败！");
-					}
-				}, "json");
-	}
-}
-
-function clearValues() {
-	var editor = KindEditor.create('#editor');
-	$("#title").val("");
-	$("#typeId").combobox("setValue", "");
-	editor.html('');
-	$("#keyWord").val("");
-}
-</script>
 
 </head>
 
@@ -110,6 +69,8 @@ function clearValues() {
 
 	<!-- 实例化编辑器 -->
 	<script type="text/javascript">
+		var editor = KindEditor.create('#editor');
+	
 		KindEditor.ready(function(K) {
 			var options = {
 			        filterMode : true
@@ -117,6 +78,45 @@ function clearValues() {
 			var editor = K.create("#editor",options);
 			prettyPrint();
 		});
+		
+		function submitData() {
+			var title = $("#title").val();
+			var typeId = $("#typeId").combobox("getValue");
+			var content = editor.html();
+			var summary = editor.text().substr(0, 155);
+			var keyWord = $("#keyWord").val();
+			if (title == null || title == '') {
+				$.messager.alert("系统提示", "请输入标题！");
+			} else if (typeId == null || typeId == '') {
+				$.messager.alert("系统提示", "请选择博客类型！");
+			} else if (content == null || content == '') {
+				$.messager.alert("系统提示", "请编辑博客内容！");
+			} else {
+				$.post("${pageContext.request.contextPath}/admin/blog/save.do",
+						{
+							'title' : title,
+							'typeId' : typeId,
+							'content' : content,
+							'summary' : summary,
+							'keyWord' : keyWord,
+						}, function(result) {
+							if (result.success) {
+								clearValues();
+								$.messager.alert("系统提示", "博客发布成功！");
+							} else {
+								$.messager.alert("系统提示", "博客发布失败！");
+							}
+						}, "json");
+			}
+		}
+
+		function clearValues() {
+			var editor = KindEditor.create('#editor');
+			$("#title").val("");
+			$("#typeId").combobox("setValue", "");
+			editor.html('');
+			$("#keyWord").val("");
+		}
 	</script>
 </body>
 </html>

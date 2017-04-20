@@ -1,5 +1,6 @@
 package com.chenbuer.controller;
 
+import java.nio.channels.FileChannel.MapMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,15 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.chenbuer.config.FinalParam;
 import com.chenbuer.entity.Blog;
 import com.chenbuer.entity.PageBean;
+import com.chenbuer.lucene.BlogIndex;
 import com.chenbuer.service.BlogService;
 import com.chenbuer.util.PageUtil;
 import com.chenbuer.util.StringUtil;
-import com.sun.xml.internal.ws.message.RelatesToHeader;
 
 @Controller
 @RequestMapping("/")
@@ -79,5 +79,22 @@ public class IndexController {
 	public String download(){
 		return "/FE/download";
 	}
-
+	
+	/**
+	 * Lucene≤È—Ø
+	 * @param q
+	 * @return
+	 */
+	@RequestMapping("/search")
+	public String search(@RequestParam(value="q")String q,ModelMap model)throws Exception{
+		
+		BlogIndex blogIndex=new BlogIndex();
+		List<Blog> blogIndexList=blogIndex.searchBlog(q);
+		
+		model.addAttribute("q",q);
+		model.addAttribute("count",blogIndexList.size());
+		
+		
+		return "/FE/searchResult";
+	}
 }

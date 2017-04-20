@@ -23,9 +23,9 @@
 							<li><a href="${pageContext.request.contextPath}/user/aboutMe.html"><font color="black"><strong>关于博主</strong></font></a></li>
 							<li><a href="${pageContext.request.contextPath}/download.html"><font color="black"><strong>本站源码下载</strong></font></a></li>
 						</ul>
-						<form class="navbar-form navbar-right" role="search">
+						<form class="navbar-form navbar-right" role="search" action="${pageContext.request.contextPath}/search.html">
 							<div class="form-group">
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" name="q"
 									placeholder="请输入要查询的关键字...">
 							</div>
 							<button type="submit" class="btn btn-default">搜索</button>

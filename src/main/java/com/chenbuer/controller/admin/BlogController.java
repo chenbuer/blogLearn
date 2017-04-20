@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -18,6 +17,7 @@ import com.chenbuer.config.FinalParam;
 import com.chenbuer.entity.AdminBlogList;
 import com.chenbuer.entity.Blog;
 import com.chenbuer.entity.PageBean;
+import com.chenbuer.lucene.BlogIndex;
 import com.chenbuer.service.BlogService;
 import com.chenbuer.util.AdminResponse;
 import com.chenbuer.util.DateUtil;
@@ -31,6 +31,8 @@ public class BlogController {
 	@Resource
 	BlogService blogService;
 	
+	BlogIndex blogIndex=new BlogIndex();
+	
 	@RequestMapping("/save")
 	public void save(Blog blog,HttpServletResponse response) throws Exception{
 		AdminResponse retObj=new AdminResponse();
@@ -38,9 +40,11 @@ public class BlogController {
 			if(blog.getId()==null){
 				//ÐÂÔö
 				blogService.save(blog);
+				blogIndex.addIndex(blog);
 			}else{
 				//ÐÞ¸Ä
 				blogService.update(blog);
+				blogIndex.updateIndex(blog);
 			}
 			retObj.setSuccess(true);
 		} catch (Exception e) {
@@ -94,6 +98,7 @@ public class BlogController {
 			String []idsString=ids.split(",");
 			for (String id: idsString) {
 				blogService.delete(Integer.parseInt(id));
+				blogIndex.delIndex(id);
 			}
 			
 			ret.setSuccess(true);
@@ -105,10 +110,9 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/findById")
-	@ResponseBody
-	public Object findById(@RequestParam(value="id")String id,HttpServletResponse response) throws Exception{
+	public void findById(@RequestParam(value="id")String id,HttpServletResponse response) throws Exception{
 		Blog blog=blogService.findById(Integer.parseInt(id));
-		return JSON.toJSONString(blog);
+		ResponseUtil.write(response, JSON.toJSONString(blog));
 	}
 	
 }

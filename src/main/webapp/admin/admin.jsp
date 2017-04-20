@@ -30,6 +30,7 @@ function openTab(text,url,iconCls){
 		<div region="north" style="height: 60px; background: #0593d3; padding: 10px" data-options="border:false" >
 			<table style="width: 100%">
 				<tr>
+					<td><a href="${pageContext.request.contextPath }/">首页</a></td>
 					<td>陈不二博客的后台管理系统</td>
 					<td style="float: right">你好：<strong><font color='red'>${user.userName }</font></strong></td>
 				</tr>
